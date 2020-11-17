@@ -14,6 +14,8 @@ try:
 except ImportError:
     from bs4 import BeautifulSoup
 import requests
+import re
+import string
 
 pp = pprint.PrettyPrinter(indent=2, width=200)
 
@@ -169,3 +171,28 @@ def uppdateGoalDescriptions(dbname, goal_links):
         """.format(description, ix + 1)
         # print(sql_insert)
         updateSqliteTable(dbname, sql_insert)
+
+
+def clean_text_round1(text):
+    """First round of cleaning.
+
+    Make text lowercase, remove text in square brackets,
+    remove punctuation and remove words containing numbers.
+    """
+    text = text.lower()
+    text = re.sub('|[.*?]|', '', text)
+    text = re.sub('[%s]' % re.escape(string.punctuation), '', text)
+    text = re.sub('\w*\d\w*', '', text)
+    return text
+
+
+def clean_text_round2(text):
+    """Second round of cleaning.
+
+    Get rid of some additional punctuation and non-sensical text
+    that was missed the first time around.
+    """
+    text = re.sub('\n', ' ', text)
+    text = re.sub('[‘’“”…–|-]', '', text)
+    text = re.sub('\s\s+', ' ', text)
+    return text
