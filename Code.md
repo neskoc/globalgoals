@@ -33,12 +33,12 @@ __Snapshot of the files and folders__
 
 - __1-data-cleaning.py__: current main file
     * Reads collected global goals data from the sqlite db,
-    * cleans up
+    * cleans up,
     * removes stop_words,
-    * does some word counting (CountVectorizer)
-    * draws a word cloud of the result
+    * does some word counting (CountVectorizer),
+    * draws a word cloud of the result.
 - __inc/functions.py__: different help functions
 - __parse_url.py__: used for parsing urls for global goals and storing data in sqlite db
-_ __inc/sv/__: files used for nlp of swedish language
-- __db/__: contains sqlite database(s) with collected data
+- __inc/sv/__: files used for nlp of swedish language
+- __db/__: contains sqlite database(s) with collected data,
     currently there is only one db, but could be more in the future
