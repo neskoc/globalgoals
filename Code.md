@@ -21,7 +21,7 @@ __Snapshot of the files and folders__
 │.......├── __init__.py  
 │.......├── examples.py  
 │.......├── functions.py  
-│.......└── sv  
+│......└── sv  
 │.................├── __init__.py  
 │.................├── lex_attrs.py  
 │.................├── morph_rules.py  
