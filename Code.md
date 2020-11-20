@@ -11,24 +11,24 @@ __Snapshot of the files and folders__
 ├── README.md  
 ├── Untitled.ipynb  
 ├── db  
-│   ├── goals.sqlite  
-│   └── goals.sqlite.sql
+│...├── goals.sqlite  
+│...└── goals.sqlite.sql
 ├── img  
-│   ├── Figure\ 2020-11-17\ 014459.png  
-│   ├── Figure\ 2020-11-17\ 014701.png  
-│   └── WordCloud_2020.11.18.png  
+│...├── Figure\ 2020-11-17\ 014459.png  
+│...├── Figure\ 2020-11-17\ 014701.png  
+│...└── WordCloud_2020.11.18.png  
 ├── inc  
-│   ├── __init__.py  
-│   ├── examples.py  
-│   ├── functions.py  
-│   └── sv  
-│       ├── __init__.py  
-│       ├── lex_attrs.py  
-│       ├── morph_rules.py  
-│       ├── stop_words.py  
-│       ├── syntax_iterators.py  
-│       ├── tag_map.py  
-│       └── tokenizer_exceptions.py  
+│...├── __init__.py  
+│...├── examples.py  
+│...├── functions.py  
+│...└── sv  
+│.......├── __init__.py  
+│.......├── lex_attrs.py  
+│.......├── morph_rules.py  
+│.......├── stop_words.py  
+│.......├── syntax_iterators.py  
+│.......├── tag_map.py  
+│.......└── tokenizer_exceptions.py  
 └── parse_url.py  
 
 - __1-data-cleaning.py__: current main file
