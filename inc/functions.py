@@ -163,6 +163,23 @@ def updateSqliteTable(dbname, sql_insert):
             print("The SQLite connection is closed")
 
 def uppdateGoalDescriptions(dbname, goal_links):
+    """
+    Update table Goals with Descriptions.
+
+    First pass didn't store Descriptions which is corrected here
+    Parameters
+    ----------
+    dbname : str
+        sqlite db name to be updated.
+    goal_links : list
+        List with all links to collect descriptions from.
+
+    Returns
+    -------
+    None.
+
+    """
+
     for ix, goal_link in enumerate(goal_links):
         print(goal_link)
         description = fetchGoal(goal_link)
@@ -180,9 +197,9 @@ def clean_text_round1(text):
     remove punctuation and remove words containing numbers.
     """
     text = text.lower()
-    text = re.sub('|[.*?]|', '', text)
-    text = re.sub('[%s]' % re.escape(string.punctuation), '', text)
-    text = re.sub('\w*\d\w*', '', text)
+    text = re.sub(r'|[.*?]|', '', text)
+    text = re.sub(r'[%s]' % re.escape(string.punctuation), '', text)
+    text = re.sub(r'\w*\d\w*', '', text)
     return text
 
 
@@ -192,7 +209,7 @@ def clean_text_round2(text):
     Get rid of some additional punctuation and non-sensical text
     that was missed the first time around.
     """
-    text = re.sub('\n', ' ', text)
-    text = re.sub('[‘’“”…–|-]', '', text)
-    text = re.sub('\s\s+', ' ', text)
+    text = re.sub(r'\n', ' ', text)
+    text = re.sub(r'[‘’“”…–|-]', '', text)
+    text = re.sub(r'\s\s+', ' ', text)
     return text

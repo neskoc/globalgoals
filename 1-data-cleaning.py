@@ -31,7 +31,7 @@ data_clean = pd.DataFrame(data_clean.Description.apply(f.clean_text_round2))
 extra_stopwords = ['är', 'både', 'samt', 'ge', 'se', 'ta',
                    'år', 'synnerhet', 'sätt', 'först', 'öka', 'minska']
 sw.STOP_WORDS = sw.STOP_WORDS.union(extra_stopwords)
-cv = CountVectorizer(stop_words=sw.STOP_WORDS, ngram_range=(1,2), max_features=1000)
+cv = CountVectorizer(stop_words=sw.STOP_WORDS, ngram_range=(1, 2), max_features=1000)
 
 data_cv = cv.fit_transform(data_clean.Description)
 data_dtm = pd.DataFrame(data_cv.toarray(), columns=cv.get_feature_names())
