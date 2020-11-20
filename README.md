@@ -8,7 +8,7 @@ Predict how well Swedish research projects are meeting the UN's Sustainable Deve
 
 ## Project boundaries
 
-1. Language base for analysis: Swedish
+1. Language of the documents (for analysis): Swedish
 2. Document set: Application submission abstracts
 3. In the first phase collected data from webb about global goals will be used as base for classifying and prediction
 4. Tagged data provided by [Formas](https://formas.se/) will be used to evaluate model
