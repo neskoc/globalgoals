@@ -11,8 +11,8 @@ __Snapshot of the files and folders__
 ├── README.md  
 ├── Untitled.ipynb  
 ├── db  
-│...├── goals.sqlite  
-│...└── goals.sqlite.sql  
+│.....├── goals.sqlite  
+│.....└── goals.sqlite.sql  
 ├── img  
 │...├── Figure\ 2020-11-17\ 014459.png  
 │...├── Figure\ 2020-11-17\ 014701.png  
