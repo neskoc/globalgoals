@@ -18,10 +18,10 @@ __Snapshot of the files and folders__
 │.......├── Figure\ 2020-11-17\ 014701.png  
 │.......└── WordCloud_2020.11.18.png  
 ├── inc  
-│.......├── __init__.py  
-│.......├── examples.py  
-│.......├── functions.py  
-│......└── sv  
+│....... ├── __init__.py  
+│....... ├── examples.py  
+│....... ├── functions.py  
+│....... └── sv  
 │.................├── __init__.py  
 │.................├── lex_attrs.py  
 │.................├── morph_rules.py  
