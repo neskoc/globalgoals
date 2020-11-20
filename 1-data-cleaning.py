@@ -20,19 +20,16 @@ table_name = 'Goals'
 engine = create_engine('sqlite:///db/goals.sqlite', echo=False)
 data_df = pd.read_sql_table(table_name, engine)
 data_df.set_index('Name', inplace=True, drop=True)
-print(data_df)
-print(data_df.columns)
+# print(data_df)
+# print(data_df.columns)
 
-round1 = lambda x: f.clean_text_round1(x)
 
-data_clean = pd.DataFrame(data_df.Description.apply(round1))
-
-round2 = lambda x: f.clean_text_round2(x)
-
-data_clean = pd.DataFrame(data_clean.Description.apply(round2))
+data_clean = pd.DataFrame(data_df.Description.apply(f.clean_text_round1))
+data_clean = pd.DataFrame(data_clean.Description.apply(f.clean_text_round2))
 
 # print(sw.STOP_WORDS)
-extra_stopwords = ['är', 'både', 'samt', 'ge', 'se', 'ta', 'år', 'synnerhet', 'sätt', 'först', 'öka', 'minska']
+extra_stopwords = ['är', 'både', 'samt', 'ge', 'se', 'ta',
+                   'år', 'synnerhet', 'sätt', 'först', 'öka', 'minska']
 sw.STOP_WORDS = sw.STOP_WORDS.union(extra_stopwords)
 cv = CountVectorizer(stop_words=sw.STOP_WORDS, ngram_range=(1,2), max_features=1000)
 
