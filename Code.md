@@ -1,9 +1,8 @@
 # About the code
 
-This document is describing how to use code in the project.
+This document is describing how code is used in the project.
 
-__Snapshot of the files and folders__
-
+__Snapshot of the files and folders__  
 .  
 ├── 1-data-cleaning.ipynb  
 ├── 1-data-cleaning.py  
