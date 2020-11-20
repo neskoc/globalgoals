@@ -10,8 +10,8 @@ Predict how well Swedish research projects are meeting the UN's Sustainable Deve
 
 1. Language of the documents (for analysis): Swedish
 2. Document set: Application submission abstracts
-3. In the first phase collected data from webb about global goals will be used as base for classifying and prediction
-4. Tagged data provided by [Formas](https://formas.se/) will be used to evaluate model
+3. In the first phase collected data from web about global goals will be used as base for learning, classifying and prediction
+4. Tagged data provided by [Formas](https://formas.se/) and [Vinnova](https://vinnova.se) will be used to evaluate model
 5. The second phase
     - synonyms of the word identified in the first phase will be considered
     - Tagged data prom Formas will be used to expand the vocabulary (after some text analysis and processing)
