@@ -7,8 +7,12 @@ Created on Wed Nov 09 2020
 """
 
 import sqlite3
+import random
 import pandas as pd
 import pprint
+import stanza
+from spacy_stanza import StanzaLanguage
+
 try:
     from BeautifulSoup import BeautifulSoup
 except ImportError:
@@ -16,9 +20,17 @@ except ImportError:
 import requests
 import re
 import string
+from sqlalchemy import create_engine
+
+pd.set_option('max_colwidth', 150)
+
+svStanzaDownloaded = False
+snlpInitialized = False
+nlpStanza = {}
 
 pp = pprint.PrettyPrinter(indent=2, width=200)
 
+categories = []
 
 def readSQliteDB(dbname, sql):
     """
@@ -190,6 +202,12 @@ def uppdateGoalDescriptions(dbname, goal_links):
         updateSqliteTable(dbname, sql_insert)
 
 
+def removeNewlines(text):
+    text = re.sub(r'\r\n', ' ', text)
+    text = re.sub(r'\n', ' ', text)
+    return text
+
+
 def clean_text_round1(text):
     """First round of cleaning.
 
@@ -212,4 +230,67 @@ def clean_text_round2(text):
     text = re.sub(r'\n', ' ', text)
     text = re.sub(r'[‘’“”…–|-]', '', text)
     text = re.sub(r'\s\s+', ' ', text)
+    return text
+
+def getGGTrainData():
+    train_data = ''
+    return train_data
+
+def addLables(textcat):
+    # textcat.add_label(category)
+
+    table_name = 'Goals'
+    engine = create_engine('sqlite:///db/goals.sqlite', echo=False)
+    data_df = pd.read_sql_table(table_name, engine)
+    data_df.set_index('Name', inplace=True, drop=True)
+
+    for data in data_df:
+        textcat.add_label(data.Name)
+        categories.append(data.Name)
+    pp.pprint(categories)
+    return textcat
+
+def load_data(limit=0, split=0.8):
+    """Load data from db/csv."""
+    # Partition off part of the train data for evaluation
+    train_data = getGGTrainData()
+    random.shuffle(train_data)
+    train_data = train_data[-limit:]
+    texts, labels = zip(*train_data)
+    # cats = [{"POSITIVE": bool(y), "NEGATIVE": not bool(y)} for y in labels]
+    cats = [categories[label - 1] for label in labels]
+    split = int(len(train_data) * split)
+    return (texts[:split], cats[:split]), (texts[split:], cats[split:])
+
+
+def downloadStanza(lang):
+    # download sv stanza (to avoid downloading it for every doc)
+    global svStanzaDownloaded
+    if not svStanzaDownloaded:
+        stanza.download(lang)
+        svStanzaDownloaded = True
+
+def initStanzaPipeline(lang):
+    downloadStanza(lang)
+    global snlpInitialized
+    global nlpStanza
+    if not snlpInitialized:
+        snlp = stanza.Pipeline(lang=lang)
+        nlpStanza['snlp'] = StanzaLanguage(snlp)
+        snlpInitialized = True
+
+
+def lemmatizeText(text):
+    text = removeNewlines(text)
+
+    initStanzaPipeline('sv')
+
+    doc = nlpStanza['snlp'](text)
+
+    lemmatized_text = ''
+    for token in doc:
+        if token.lemma_ == 'all':
+            token.lemma_ = 'alla'
+        lemmatized_text += token.lemma_ + ' '
+    text = lemmatized_text
     return text

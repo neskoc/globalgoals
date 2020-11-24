@@ -6,10 +6,6 @@ Created on Mon Nov  9 13:45:28 2020
 @author: nesko
 """
 
-try:
-    from BeautifulSoup import BeautifulSoup
-except ImportError:
-    from bs4 import BeautifulSoup
 import functions as f
 
 dbname = 'db/goals.sqlite'

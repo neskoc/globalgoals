@@ -7,7 +7,7 @@ Created on Mon Nov 16 23:08:25 2020
 """
 
 from inc import functions as f
-from inc.sv import stop_words as sw
+from inc import stop_words as sw
 import pandas as pd
 from sqlalchemy import create_engine
 from sklearn.feature_extraction.text import CountVectorizer
@@ -23,15 +23,19 @@ data_df.set_index('Name', inplace=True, drop=True)
 # print(data_df)
 # print(data_df.columns)
 
-
-data_clean = pd.DataFrame(data_df.Description.apply(f.clean_text_round1))
+data_clean = pd.DataFrame(data_df.Description.apply(f.lemmatizeText))
+data_clean = pd.DataFrame(data_clean.Description.apply(f.clean_text_round1))
 data_clean = pd.DataFrame(data_clean.Description.apply(f.clean_text_round2))
 
 # print(sw.STOP_WORDS)
-extra_stopwords = ['är', 'både', 'samt', 'ge', 'se', 'ta',
-                   'år', 'synnerhet', 'sätt', 'först', 'öka', 'minska']
+extra_stopwords = ['vara', 'både', 'samt', 'ge', 'se', 'ta',
+                   'år', 'synnerhet', 'sätt', 'först', 'projekt',
+                   'öka', 'minska', 'disputationsämne', 'huvudsyfte',
+                   'syfte', 'bakgrund', 'ansökan', 'resebidrag',
+                   'målsättning', 'konferens', 'undertecknad']
 sw.STOP_WORDS = sw.STOP_WORDS.union(extra_stopwords)
-cv = CountVectorizer(stop_words=sw.STOP_WORDS, ngram_range=(1, 2), max_features=1000)
+# cv = CountVectorizer(stop_words=sw.STOP_WORDS, ngram_range=(1, 2), max_features=1000)
+cv = CountVectorizer(stop_words=sw.STOP_WORDS, max_features=1000)
 
 data_cv = cv.fit_transform(data_clean.Description)
 data_dtm = pd.DataFrame(data_cv.toarray(), columns=cv.get_feature_names())
