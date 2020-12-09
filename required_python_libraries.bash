@@ -2,7 +2,7 @@
 
 # I'll try to remember to keep this file updated though I probably have (already) missed to list all modules due to already been installed prior to making the first version of the file and prior to the project start
 
-pip install pandas numpy regex scipy scikit-learn wordcloud nltk lxml beautifulsoup4 tensorflow torch SQLAlchemy spacy-stanza pytextrank spacy-udpipe transformers lemmy
+pip install pandas numpy regex scipy scikit-learn wordcloud nltk lxml beautifulsoup4 tensorflow torch SQLAlchemy spacy-stanza pytextrank spacy-udpipe transformers lemmy googledrivedownloader pip-tools
 
 ##################
 #### Optional ####
