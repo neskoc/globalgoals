@@ -4,6 +4,13 @@
 Created on Mon Nov 23 23:27:05 2020
 
 @author: nesko
+
+1. Import raw Swecris data from csv-file,
+2. Filter out abstracts in sv language by counting specific Swedish letters åöä
+    2.a Threshhold for the counter is set by variable svThreshhold
+    2.b Second filter is by minimum number of chars in the abstract: totalCharsThreshhold
+3. The result is saved in the sqlite database (table name swecris)
+
 """
 
 import pandas as pd
@@ -17,6 +24,8 @@ df = pd.DataFrame(df, columns=['Dnr', 'title.sv', 'abstract.sv', 'end_date', 'or
 nrSwLettersList = []
 nonSwedishIndexList = []
 lenlist = []
+svThreshhold = 5
+totalCharsThreshhold = 50
 
 def replaceNan(x):
     if not isinstance(x, str):
@@ -34,7 +43,7 @@ for ix, raw in enumerate(a_df):
         if letter in swedishLetters:
             nrSwLetters += 1
     nrSwLettersList.append(nrSwLetters)
-    if nrSwLetters <= 5 or len(raw[2]) < 50:
+    if nrSwLetters <= svThreshhold or len(raw[2]) < totalCharsThreshhold:
         nonSwedishIndexList.append(ix)
     else:
         lenlist.append(len(raw[2]))

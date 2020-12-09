@@ -6,7 +6,8 @@ Created on Sun Nov 22 19:06:38 2020
 @author: nesko
 
 Train a convolutional neural network text classifier on the
-IMDB dataset, using the TextCategorizer component. The dataset will be loaded
+Global Goals dataset (adapted from IMDB dataset),
+using the TextCategorizer component. The dataset will be loaded
 automatically via Thinc's built-in dataset loader. The model is added to
 spacy.pipeline, and predictions are available via `doc.cats`. For more details,
 see the documentation:
