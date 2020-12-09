@@ -218,8 +218,8 @@ def uppdateGoalDescriptions(dbname, goal_links):
 
 
 def removeNewlines(text):
-    # text = re.sub(r'\r\n', ' ', text)
-    # text = re.sub(r'\n', ' ', text)
+    text = re.sub(r'\\r\\n', ' ', text)
+    text = re.sub(r'\\n', ' ', text)
     return ' '.join(text.split())
 
 

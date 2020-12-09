@@ -27,7 +27,7 @@ extra_stopwords = [
     'bakgrund',
     'disputationsämne',
     'huvudsyfte',
-    'målsättning',
+    'mål', 'målsättning',
     'konferens',
     'projekt',
     'resebidrag',
