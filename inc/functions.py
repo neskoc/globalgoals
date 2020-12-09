@@ -10,16 +10,17 @@ import sqlite3
 import random
 import pandas as pd
 import pprint
+import string
+import re
+import requests
 import stanza
 from spacy_stanza import StanzaLanguage
 
 try:
-    from BeautifulSoup import BeautifulSoup
+    from BeautifulSoup import BeautifulSoup, SoupStrainer
 except ImportError:
-    from bs4 import BeautifulSoup
-import requests
-import re
-import string
+    from bs4 import BeautifulSoup, SoupStrainer
+from urllib import parse
 from sqlalchemy import create_engine
 
 pd.set_option('max_colwidth', 150)
@@ -85,6 +86,20 @@ def fetchHtmlContent(link):
         return False
 
     return f.text
+
+
+def fetchSynonyms(word):
+    urlencoded_word = parse.quote_plus(word)
+    page_link = "https://www.synonymer.se/sv-syn/" + urlencoded_word
+    synonyms = []
+    page = fetchHtmlContent(page_link)
+    soup = BeautifulSoup(page, 'lxml')
+    div_dict_default = soup.find('div', {'id': 'dict-default'})
+    div_body = div_dict_default.find('div', {'class': 'body'})
+    a_tags = div_body.ul.li.ol.find_all('a')
+    for a in a_tags:
+        synonyms.append(a.text)
+    return synonyms
 
 
 def populateGoalNames(dbname, goal_links):
@@ -203,6 +218,12 @@ def uppdateGoalDescriptions(dbname, goal_links):
 
 
 def removeNewlines(text):
+    # text = re.sub(r'\r\n', ' ', text)
+    # text = re.sub(r'\n', ' ', text)
+    return ' '.join(text.split())
+
+
+def mergeMultipleSpaces(text):
     text = re.sub(r'\r\n', ' ', text)
     text = re.sub(r'\n', ' ', text)
     return text
