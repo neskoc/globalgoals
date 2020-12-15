@@ -13,8 +13,8 @@ SELECT CAST(Formas1 AS INTEGER)  AS class, count(Formas1) AS freq
 ```
 |__class__ | __freq__|
 |---------:|--------:|
-|0 | 7|
-|1 | 0*|
+|0* | 7|
+|1 | 0**|
 |2 | 130|
 |3 | 55|
 |4 | 14|
@@ -31,7 +31,8 @@ SELECT CAST(Formas1 AS INTEGER)  AS class, count(Formas1) AS freq
 |16 | 10|
 |17 | 13|
 
-\* freq for class '1' comes form the report and not from the db (there is no submission estimated to belong to class 1)
+> \* class "0" means that the submission is estimated to belong to none of the classes  
+> \*\* freq for class '1' comes form the report and not from the db (there is no submission estimated to belong to class 1)
 
 #### Ordered by frequency
 
