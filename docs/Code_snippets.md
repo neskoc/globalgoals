@@ -9,10 +9,12 @@
 -- Formas classified (categorised) data
 SELECT CAST(Formas1 AS INTEGER)  AS class, count(Formas1) AS freq
     FROM clean_swecris
-    WHERE  Formas1 != '' AND Formas1 != '0' GROUP BY class ORDER BY class ASC;
+    WHERE  Formas1 != '' GROUP BY class ORDER BY class ASC;
 ```
 |__class__ | __freq__|
 |---------:|--------:|
+|0 | 7|
+|1 | 0*|
 |2 | 130|
 |3 | 55|
 |4 | 14|
@@ -28,6 +30,8 @@ SELECT CAST(Formas1 AS INTEGER)  AS class, count(Formas1) AS freq
 |15 | 115|
 |16 | 10|
 |17 | 13|
+
+\* freq for class '1' comes form the report and not from the db (there is no submission estimated to belong to class 1)
 
 #### Ordered by frequency
 
