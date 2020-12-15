@@ -32,7 +32,7 @@ SELECT CAST(Formas1 AS INTEGER)  AS class, count(Formas1) AS freq
 |17 | 13|
 
 > \* class "0" means that the submission is estimated to belong to none of the classes  
-> \*\* freq for class '1' comes form the report and not from the db (there is no submission estimated to belong to class 1)
+> \*\* freq for class '1' comes form the report and not from the db (there is no submission estimated to belong to class 1), it is manually added to the list
 
 #### Ordered by frequency
 
