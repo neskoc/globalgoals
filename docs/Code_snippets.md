@@ -7,7 +7,9 @@
 
 ```sql
 -- Formas classified (categorised) data
-SELECT CAST(Formas1 AS INTEGER)  AS class, count(Formas1) AS freq FROM clean_swecris WHERE  Formas1 != '' AND Formas1 != '0' GROUP BY class ORDER BY class ASC;
+SELECT CAST(Formas1 AS INTEGER)  AS class, count(Formas1) AS freq
+    FROM clean_swecris
+    WHERE  Formas1 != '' AND Formas1 != '0' GROUP BY class ORDER BY class ASC;
 ```
 |__class__ | __freq__|
 |---------:|--------:|
