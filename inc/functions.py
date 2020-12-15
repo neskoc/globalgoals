@@ -171,13 +171,12 @@ def fetchGoal(link):
 
     return description
 
-def updateSqliteTable(dbname, sql_insert):
+def updateSqliteTable(dbname, sql):
     try:
         sqliteConnection = sqlite3.connect(dbname)
         print("Connected to SQLite")
         cursor = sqliteConnection.cursor()
-        sql_update_query = sql_insert
-        cursor.execute(sql_update_query)
+        cursor.execute(sql)
         sqliteConnection.commit()
         print("Record Updated successfully ")
         cursor.close()

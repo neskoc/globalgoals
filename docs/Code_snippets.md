@@ -130,12 +130,13 @@ __V	F	class__
 ### SQL queries
 
 ```sql
--- select random at most (99 - count) Vinnova rows of specific class (9)
-SELECT abstract, Self1 AS class FROM clean_swecris WHERE Self1 == '9' ORDER BY RANDOM() LIMIT 99 -
-	(SELECT count(Formas1) AS count FROM clean_swecris WHERE Formas1 == '9');
 
 -- select at most 99 Formas rows of specific class (1)
 SELECT abstract, Formas1 AS class FROM clean_swecris WHERE Formas1 == '1' ORDER BY RANDOM() LIMIT 99;
+
+-- select random at most (99 - count) Vinnova rows of specific class (9)
+SELECT abstract, Self1 AS class FROM clean_swecris WHERE Self1 == '9' ORDER BY RANDOM() LIMIT 99 -
+	(SELECT count(Formas1) AS count FROM clean_swecris WHERE Formas1 == '9');
 
 -- select all Formas1 except for empty and '0'
 SELECT abstract, Formas1 AS class FROM clean_swecris WHERE Formas1 != '' AND Formas1 != '0';
