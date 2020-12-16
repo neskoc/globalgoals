@@ -8,13 +8,15 @@ SELECT CAST(Self1 AS INTEGER)  AS class, count(Self1) AS freq
     WHERE  Self1 != '' GROUP BY class ORDER BY class ASC;</sql><sql name="SQL 5">-- Vinnovas classification through self assessment
 SELECT COUNT(Self1) AS freq, Self1 AS class FROM clean_swecris
     WHERE  Self1 != '' GROUP BY class ORDER BY freq ASC;</sql><sql name="SQL 6">SELECT abstract, Self1 AS class FROM clean_swecris
-	WHERE Self1 == '3' ORDER BY RANDOM()
+	WHERE Self1 == '4' ORDER BY RANDOM()
 		LIMIT
 			CASE 
-				WHEN (99 - (SELECT count(Formas1) FROM clean_swecris WHERE Formas1 == '3')) &gt; 0 THEN (SELECT 99 - count(Formas1) FROM clean_swecris WHERE Formas1 == '3')
+				WHEN (99 - (SELECT count(Formas1) FROM clean_swecris WHERE Formas1 == '4')) &gt; 0
+					THEN (SELECT 99 - count(Formas1) FROM clean_swecris WHERE Formas1 == '4')
 				ELSE 0
 			END;</sql><sql name="SQL 7">SELECT
 			CASE 
-				WHEN (99 - (SELECT count(Formas1) FROM clean_swecris WHERE Formas1 == '3')) &gt; 0 THEN (SELECT 99 - count(Formas1) FROM clean_swecris WHERE Formas1 == '3')
+				WHEN (99 - (SELECT count(Formas1) FROM clean_swecris WHERE Formas1 == 4)) &gt; 0
+					THEN (SELECT 99 - count(Formas1) FROM clean_swecris WHERE Formas1 == 4)
 				ELSE 0
-			END AS freq;</sql><current_tab id="5"/></tab_sql></sqlb_project>
+			END AS freq;</sql><current_tab id="4"/></tab_sql></sqlb_project>
