@@ -151,4 +151,5 @@ desktop.ini
 .private/
 
 # Other
-
+.data/
+Test_pytorch_text_sent.ipynb
