@@ -149,6 +149,7 @@ desktop.ini
 
 # Private area
 .private/
+private_code/
 
 # Other
 .data/
