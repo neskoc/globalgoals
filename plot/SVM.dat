@@ -1,4 +1,4 @@
-# Multinomial Naive Bayes results
+# Suport Vector Machine (linear kernel) results
 label precision    recall  f1-score   support
 2       0.67      0.70      0.68        20
 3       0.46      0.33      0.39        18

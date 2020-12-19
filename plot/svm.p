@@ -3,7 +3,7 @@
 # Gnuplot script file for plotting data in file "SVM.dat"
 # This file (gnuplot script): svm.p
 reset
-set title "Classification report: Support Vector Machines"
+set title "Classification report: Support Vector Machine"
 set key autotitle columnhead 
 # set datafile separator ","
 set datafile commentschars "#%"
