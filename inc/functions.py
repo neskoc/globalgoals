@@ -253,6 +253,8 @@ def clean_text_round2(text):
     return text
 
 def getGGTrainData():
+    table_name = 'Training_set'
+    db_path = 'db/training.sqlite'
     train_data = ''
     return train_data
 
