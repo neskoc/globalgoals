@@ -30,9 +30,9 @@ set xlabel "Label (topic class)"
 
 # Colors
 array A[4]
-A[2] = 'grey'
-A[3] = 'blue'
-A[4] = 'green'
+A[2] = '#a6cee3'
+A[3] = '#1f78b4'
+A[4] = '#b2df8a'
 
 plot for [col=2:4] 'training_set.dat' using col:xtic(1) lc rgb A[col] ti columnhead(col)
 # plot 'test.dat' using 2:xtic(1),  '' using 2 title 'Col1', '' using 3 title 'Col2', '' using 4 title 'Col3'
